@@ -4,12 +4,15 @@ def input_guess(start, end):
     valid_input = False
     while not valid_input:
         user_input = input("Guess a number between {0} and {1}:\n".format(start, end))
-        try:
+        
+        if user_input.isdigit():
             user_input = int(user_input)
             if user_input >= start and user_input <=end:
                 valid_input = True
-        except:
-            print("Enter a whole number!")
+            else:
+                print("Choose a number inside the given range.\n")
+        else:
+            print("Invalid input!\n")
     
     return user_input
 
@@ -33,10 +36,10 @@ def main():
                 print(f"You took {num_guesses} tries to guess the number.")
                 still_guessing = False
             elif guess < magic_number:
-                print(f"Sorry, {guess} is too low.")
+                print(f"Sorry, {guess} is too low.\n")
                 start_value = guess
             else:
-                print(f"Sorry, {guess} is too high.")
+                print(f"Sorry, {guess} is too high.\n")
                 end_value = guess
 
         replay = input("Would you like to play again (Y/N)? ")
